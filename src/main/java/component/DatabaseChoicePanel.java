@@ -100,7 +100,7 @@ public class DatabaseChoicePanel extends JPanel {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         if (e.getButton() == MouseEvent.BUTTON1) {
-                            frame.setCustomQuery();
+                            frame.setCustomQuery("database");
                         }
                     }
                 });
@@ -135,10 +135,10 @@ public class DatabaseChoicePanel extends JPanel {
         setLocation(42, 30);
         setSize(frame.getWidth() - 100, frame.getHeight() - 60);
 
-        welcomeLabel.setSize(100, 30);
+        welcomeLabel.setSize(getWidth(), 30);
         welcomeLabel.setLocation((getWidth() - welcomeLabel.getWidth()) / 2, 0);
 
-        selectDatabase.setSize(140, 30);
+        selectDatabase.setSize(getWidth(), 30);
         selectDatabase.setLocation((getWidth() - selectDatabase.getWidth()) / 2, 40);
 
         tablePane.setVisible(false);

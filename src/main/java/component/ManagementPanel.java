@@ -131,6 +131,9 @@ public class ManagementPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1) {
+                    if (tablePane.getTable().getSelectedRow() == -1) {
+                        return;
+                    }
                     String[] values = new String[tablePane.getColumns().length];
                     for (int i = 0; i < values.length; i++) {
                         values[i] = (String) tablePane.getTable().getModel().getValueAt(tablePane.getTable().getSelectedRow(), i);

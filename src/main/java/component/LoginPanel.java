@@ -122,7 +122,7 @@ public class LoginPanel extends JPanel {
         setLocation(42 , 30);
         setSize(frame.getWidth() - 100, frame.getHeight() - 60);
 
-        loginLabel.setSize(100, 30);
+        loginLabel.setSize(getWidth(), 30);
         loginLabel.setLocation((getWidth()-loginLabel.getWidth())/2 , 0);
 
         urlLabel.setSize(100 , 20);

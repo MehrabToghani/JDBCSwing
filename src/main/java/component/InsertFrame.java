@@ -26,7 +26,7 @@ public class InsertFrame extends JFrame {
         this.setTitle("MySql");
         this.setSize(400, 400);
         this.setMinimumSize(new Dimension(300, 300));
-        Image iconBar = Toolkit.getDefaultToolkit().getImage("icon.png");
+        Image iconBar = Toolkit.getDefaultToolkit().getImage("src/icon.png");
         this.setIconImage(iconBar);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
@@ -51,10 +51,12 @@ public class InsertFrame extends JFrame {
         insert.setForeground(Color.BLACK);
         insert.setMargin(new Insets(1, 1, 1, 1));
         insert.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        insert.setSize(80, 30);
         framePanel.add(insert);
 
         pane.setBackground(framePanel.getBackground());
         pane.setBorder(null);
+        pane.setLocation(30, 70);
         framePanel.add(pane);
 
         inputPanel.setOpaque(false);
@@ -144,15 +146,13 @@ public class InsertFrame extends JFrame {
     private void adjustmentComponentsSize() {
         framePanel.setSize(getWidth() - 10, getHeight());
 
-        header.setSize(200, 30);
+        header.setSize(framePanel.getWidth(), 30);
         header.setLocation((framePanel.getWidth() - header.getWidth()) / 2, 10);
 
-        insert.setSize(80, 30);
         insert.setLocation((framePanel.getWidth() - insert.getWidth()) / 2, framePanel.getHeight() - 90);
 
         pane.setVisible(false);
         pane.setSize(framePanel.getWidth() - 60, framePanel.getHeight() - 190);
-        pane.setLocation(30, 70);
         pane.setVisible(true);
     }
 }

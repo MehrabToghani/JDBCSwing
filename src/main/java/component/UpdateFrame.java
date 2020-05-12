@@ -15,12 +15,12 @@ public class UpdateFrame extends JFrame {
     ManagementPanel managementPanel;
     String[] values;
     private JPanel framePanel = new JPanel();
-    private JLabel header = new JLabel("Enter new record information");
+    private JLabel header = new JLabel("Update record information");
     private JButton update = new JButton("update");
     private JPanel inputPanel = new JPanel();
     JScrollPane pane = new JScrollPane();
 
-    public UpdateFrame(MysqlFrame parentFrame, String tableName , ManagementPanel managementPanel , String[] values) {
+    public UpdateFrame(MysqlFrame parentFrame, String tableName, ManagementPanel managementPanel, String[] values) {
         this.parentFrame = parentFrame;
         this.tableName = tableName;
         this.managementPanel = managementPanel;
@@ -28,7 +28,7 @@ public class UpdateFrame extends JFrame {
         this.setTitle("MySql");
         this.setSize(400, 400);
         this.setMinimumSize(new Dimension(300, 300));
-        Image iconBar = Toolkit.getDefaultToolkit().getImage("icon.png");
+        Image iconBar = Toolkit.getDefaultToolkit().getImage("src/icon.png");
         this.setIconImage(iconBar);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
@@ -88,7 +88,7 @@ public class UpdateFrame extends JFrame {
 
                     @Override
                     public void keyTyped(KeyEvent e) {
-                        if (jtf.getForeground() == Color.BLACK){
+                        if (jtf.getForeground() == Color.BLACK) {
                             isEmpty = false;
                         }
                         if (isEmpty) {
@@ -123,11 +123,11 @@ public class UpdateFrame extends JFrame {
                             String q = "";
                             String w = "";
                             for (int i = 0; i < inputField.length; i++) {
-                                q += rsm.getColumnName(i+1) + " = ";
-                                q += inputField[i].getForeground() == Color.BLACK? "'" + inputField[i].getText() + "'" : "null";
+                                q += rsm.getColumnName(i + 1) + " = ";
+                                q += inputField[i].getForeground() == Color.BLACK ? "'" + inputField[i].getText() + "'" : "null";
                                 q += (i == inputField.length - 1) ? "" : " , ";
-                                w += rsm.getColumnName(i+1);
-                                w += values[i] != null? " = '" + values[i] + "'" : " is null";
+                                w += rsm.getColumnName(i + 1);
+                                w += values[i] != null ? " = '" + values[i] + "'" : " is null";
                                 w += (i == values.length - 1) ? "" : " and ";
                             }
                             parentFrame.getMysql().updateQuery("update " + tableName + " set " + q + " where " + w + ";");
@@ -140,8 +140,8 @@ public class UpdateFrame extends JFrame {
                 }
             });
 
-            for (int i = 0 ; i<inputField.length ; i++){
-                if (values[i]!= null) {
+            for (int i = 0; i < inputField.length; i++) {
+                if (values[i] != null) {
                     inputField[i].setText(values[i]);
                     inputField[i].setForeground(Color.BLACK);
                 }
@@ -161,7 +161,7 @@ public class UpdateFrame extends JFrame {
     private void adjustmentComponentsSize() {
         framePanel.setSize(getWidth() - 10, getHeight());
 
-        header.setSize(200, 30);
+        header.setSize(framePanel.getWidth(), 30);
         header.setLocation((framePanel.getWidth() - header.getWidth()) / 2, 10);
 
         update.setSize(80, 30);

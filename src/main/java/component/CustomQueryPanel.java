@@ -14,6 +14,7 @@ import java.sql.SQLException;
 public class CustomQueryPanel extends JPanel {
 
     private MysqlFrame frame;
+    private String beforeState;
     private JButton back = new JButton("<Back");
     private JLabel queryLabel = new JLabel("Enter your query");
     private JTextArea queryField = new JTextArea();
@@ -24,10 +25,12 @@ public class CustomQueryPanel extends JPanel {
     private JTextArea message = new JTextArea();
     private JScrollPane messagePane = new JScrollPane(message);
 
-    public CustomQueryPanel(MysqlFrame frame) {
+    public CustomQueryPanel(MysqlFrame frame , String beforeState) {
         this.frame = frame;
+        this.beforeState = beforeState;
         this.setLayout(null);
         this.setOpaque(false);
+        setLocation(42, 30);
         initComponents();
         adjustComponentsSize();
     }
@@ -38,6 +41,7 @@ public class CustomQueryPanel extends JPanel {
         back.setBackground(new Color(239, 239, 239));
         back.setForeground(Color.BLACK);
         back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        back.setBounds(0, 0, 50, 25);
         this.add(back);
 
         queryLabel.setForeground(Color.WHITE);
@@ -77,7 +81,12 @@ public class CustomQueryPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1) {
-                    frame.setDatabaseChoice();
+                    if(beforeState.equals("table")) {
+                        frame.setTableChoice();
+                    }
+                    else {
+                        frame.setDatabaseChoice();
+                    }
                 }
             }
         });
@@ -136,12 +145,9 @@ public class CustomQueryPanel extends JPanel {
     }
 
     private void adjustComponentsSize() {
-        setLocation(42, 30);
         setSize(frame.getWidth() - 100, frame.getHeight() - 60);
 
-        back.setBounds(0, 0, 50, 25);
-
-        queryLabel.setSize(140, 30);
+        queryLabel.setSize(getWidth(), 30);
         queryLabel.setLocation((getWidth() - queryLabel.getWidth()) / 2, 0);
 
         queryPane.setVisible(false);

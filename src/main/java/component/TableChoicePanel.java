@@ -109,7 +109,7 @@ public class TableChoicePanel extends JPanel {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         if (e.getButton() == MouseEvent.BUTTON1) {
-                            frame.setCustomQuery();
+                            frame.setCustomQuery("table");
                         }
                     }
                 });
@@ -141,7 +141,7 @@ public class TableChoicePanel extends JPanel {
 
         back.setBounds(0, 0, 50, 25);
 
-        selectTable.setSize(140, 30);
+        selectTable.setSize(getWidth(), 30);
         selectTable.setLocation((getWidth() - selectTable.getWidth()) / 2, 0);
 
         tablePane.setVisible(false);

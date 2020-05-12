@@ -17,7 +17,7 @@ public class MysqlFrame extends JFrame {
         this.setTitle("MySql");
         this.setSize(600, 400);
         this.setMinimumSize(new Dimension(350, 360));
-        Image iconBar = Toolkit.getDefaultToolkit().getImage("icon.png");
+        Image iconBar = Toolkit.getDefaultToolkit().getImage("src/icon.png");
         this.setIconImage(iconBar);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -68,10 +68,10 @@ public class MysqlFrame extends JFrame {
         target.setVisible(true);
     }
 
-    public void setCustomQuery() {
+    public void setCustomQuery(String beforeState) {
         target.setVisible(false);
         target.removeAll();
-        target = new CustomQueryPanel(this);
+        target = new CustomQueryPanel(this , beforeState);
         framePanel.add(target);
         target.setVisible(true);
     }
