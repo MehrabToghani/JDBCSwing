@@ -87,7 +87,7 @@ public class UpdateFrame extends JFrame {
                     boolean isEmpty = true;
 
                     @Override
-                    public void keyTyped(KeyEvent e) {
+                    public void keyPressed(KeyEvent e) {
                         if (jtf.getForeground() == Color.BLACK) {
                             isEmpty = false;
                         }
@@ -130,7 +130,7 @@ public class UpdateFrame extends JFrame {
                                 w += values[i] != null ? " = '" + values[i] + "'" : " is null";
                                 w += (i == values.length - 1) ? "" : " and ";
                             }
-                            parentFrame.getMysql().updateQuery("update " + tableName + " set " + q + " where " + w + ";");
+                            parentFrame.getMysql().updateQuery("update " + tableName + " set " + q + " where " + w + " limit 1;");
                             managementPanel.doSearch();
                             dispose();
                         } catch (SQLException ex) {

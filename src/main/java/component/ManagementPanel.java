@@ -4,10 +4,7 @@ import source.MysqlFrame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -79,6 +76,15 @@ public class ManagementPanel extends JPanel {
             public void mouseClicked(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1) {
                     frame.setTableChoice();
+                }
+            }
+        });
+
+        searchField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    doSearch();
                 }
             }
         });
@@ -163,7 +169,7 @@ public class ManagementPanel extends JPanel {
                                 }
                                 str += (i == tablePane.getColumns().length - 1) ? " " : " and ";
                             }
-                            frame.getMysql().updateQuery("delete from " + tableName + " where " + str);
+                            frame.getMysql().updateQuery("delete from " + tableName + " where " + str + " limit 1;");
                             doSearch();
                         } catch (SQLException ex) {
                             JOptionPane.showConfirmDialog(null, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);

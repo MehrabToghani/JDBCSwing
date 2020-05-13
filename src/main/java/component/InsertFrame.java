@@ -84,7 +84,7 @@ public class InsertFrame extends JFrame {
                     boolean isEmpty = true;
 
                     @Override
-                    public void keyTyped(KeyEvent e) {
+                    public void keyPressed(KeyEvent e) {
                         if (isEmpty) {
                             jtf.setText("");
                         }
