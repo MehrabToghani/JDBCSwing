@@ -11,8 +11,8 @@ public class LoginPanel extends JPanel {
 
     private MysqlFrame frame;
     private JLabel loginLabel = new JLabel("Login");
-    private JLabel urlLabel = new JLabel("URL: ");
-    private JTextField urlField = new JTextField("jdbc:mysql://localhost:3306");
+    private JLabel serverLabel = new JLabel("Server: ");
+    private JTextField serverField = new JTextField("jdbc:mysql://localhost:3306");
     private JLabel userLabel = new JLabel("User: ");
     private JTextField userField = new JTextField("root");
     private JLabel passwordLabel = new JLabel("Password: ");
@@ -34,12 +34,12 @@ public class LoginPanel extends JPanel {
         loginLabel.setHorizontalAlignment(0);
         this.add(loginLabel);
 
-        urlLabel.setForeground(Color.WHITE);
-        urlLabel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
-        this.add(urlLabel);
+        serverLabel.setForeground(Color.WHITE);
+        serverLabel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
+        this.add(serverLabel);
 
-        urlField.setMargin(new Insets(1 , 5 , 1 , 5));
-        this.add(urlField);
+        serverField.setMargin(new Insets(1 , 5 , 1 , 5));
+        this.add(serverField);
 
         userLabel.setForeground(Color.WHITE);
         userLabel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
@@ -90,7 +90,7 @@ public class LoginPanel extends JPanel {
             }
         };
 
-        urlField.addKeyListener(enterListener);
+        serverField.addKeyListener(enterListener);
         userField.addKeyListener(enterListener);
         passwordField.addKeyListener(enterListener);
 
@@ -107,7 +107,7 @@ public class LoginPanel extends JPanel {
             for (char c : passwordField.getPassword()) {
                 password += c;
             }
-            Mysql mysql = new Mysql(urlField.getText().trim(), userField.getText().trim(), password);
+            Mysql mysql = new Mysql(serverField.getText().trim(), userField.getText().trim(), password);
             frame.setMysql(mysql);
             frame.setDatabaseChoice();
         } catch (ClassNotFoundException | SQLException ex) {
@@ -125,7 +125,7 @@ public class LoginPanel extends JPanel {
         loginLabel.setSize(getWidth(), 30);
         loginLabel.setLocation((getWidth()-loginLabel.getWidth())/2 , 0);
 
-        urlLabel.setSize(100 , 20);
+        serverLabel.setSize(100 , 20);
 
         userLabel.setSize(100 , 20);
 
@@ -138,9 +138,9 @@ public class LoginPanel extends JPanel {
         error.setLocation(0 , 250);
 
         if (frame.getWidth() > 400) {
-            urlLabel.setLocation((frame.getWidth()-400)/2, 60);
-            urlField.setSize( 200, 20);
-            urlField.setLocation((frame.getWidth()-400)/2 + 100 , 60);
+            serverLabel.setLocation((frame.getWidth()-400)/2, 60);
+            serverField.setSize( 200, 20);
+            serverField.setLocation((frame.getWidth()-400)/2 + 100 , 60);
 
             userLabel.setLocation((frame.getWidth()-400)/2, 110);
             userField.setSize( 200, 20);
@@ -150,9 +150,9 @@ public class LoginPanel extends JPanel {
             passwordField.setSize( 200, 20);
             passwordField.setLocation((frame.getWidth()-400)/2 + 100 , 160);
         } else {
-            urlLabel.setLocation(0, 60);
-            urlField.setSize( getWidth()-100, 20);
-            urlField.setLocation(100 , 60);
+            serverLabel.setLocation(0, 60);
+            serverField.setSize( getWidth()-100, 20);
+            serverField.setLocation(100 , 60);
 
             userLabel.setLocation(0, 110);
             userField.setSize( getWidth()-100, 20);
